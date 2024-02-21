@@ -3,23 +3,31 @@ import "./effects.css";
 
 export const SimpleForms = () => {
   const [formState, setFormState] = useState({
-    name: "",
+    nombre: "",
     email: "",
   });
 
   const { name, email } = formState;
 
   useEffect(() => {
-    console.log(" useEffect -> EFFECT");
-  });
+    console.log(" Carga Inicial");
+  }, []);
 
-  const handleInputChange = (e) => {
-    console.log("HandleInputChange -> CHANGE");
-    console.log("NAME: ", e.target.name);
-    console.log("VALUE", e.target.value);
+  useEffect(() => {
+    console.log("email Cambio");
+  }, [formState.email]);
+
+  useEffect(() => {
+    console.log("nombre Cambio");
+  }, [formState.nombre]);
+
+  const handleInputChange = ({ target }) => {
+    /* console.log("HandleInputChange");
+    console.log("NAME: ", target.name);
+    console.log("VALUE", target.value); */
     setFormState({
       ...formState,
-      [e.target.name]: e.target.value,
+      [target.name]: target.value,
     });
   };
 
@@ -27,14 +35,26 @@ export const SimpleForms = () => {
     <>
       <h1>useEffect</h1>
       <hr />
-      <div className="form-group">
+      <div className="form-group m-2">
         <input
           type="text"
-          name="name"
+          name="nombre"
           className="form-control"
           placeholder="Write name..."
           autoComplete="off"
           value={name}
+          onChange={handleInputChange}
+        />
+      </div>
+
+      <div className="form-group m-2">
+        <input
+          type="text"
+          name="email"
+          className="form-control"
+          placeholder="Write email..."
+          autoComplete="off"
+          value={email}
           onChange={handleInputChange}
         />
       </div>
