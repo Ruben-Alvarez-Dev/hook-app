@@ -2,6 +2,7 @@ import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { MemoHook } from "./components/06-memos/MemoHook";
+import { CallbackHook } from "./components/06-memos/CallbackHook";
 /* import App from "./app/App"; */
 /* import { CounterApp } from "./components/01-useState/CounterApp"; */
 /* import { CounterWithCustomHook } from "./components/01-useState/CounterWithCustomHook"; */
@@ -29,6 +30,7 @@ root.render(
     {/* <RealExampleRef /> */}
     {/* <UseLayoutEffect /> */}
     {/* <Memorize /> */}
-    <MemoHook />
+    {/* <MemoHook /> */}
+    <CallbackHook />
   </>
 );
