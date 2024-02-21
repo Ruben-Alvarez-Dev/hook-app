@@ -4,7 +4,8 @@ import ReactDOM from "react-dom/client";
 /* import App from "./app/App"; */
 /* import { CounterApp } from "./components/01-useState/CounterApp"; */
 /* import { CounterWithCustomHook } from "./components/01-useState/CounterWithCustomHook"; */
-import { SimpleForms } from "./components/02-useEffect/SimpleForms";
+/* import { SimpleForms } from "./components/02-useEffect/SimpleForms"; */
+import { FormWithCustomHook } from "./components/02-useEffect/FormWithCustomHook";
 
 const container = document.getElementById("app");
 const root = ReactDOM.createRoot(container);
@@ -14,6 +15,7 @@ root.render(
     {/* <App /> */}
     {/* <CounterApp /> */}
     {/* <CounterWithCustomHook /> */}
-    <SimpleForms />
+    {/* <SimpleForms /> */}
+    <FormWithCustomHook />
   </>
 );
