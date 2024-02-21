@@ -12,11 +12,11 @@ export const MultipleCustomHooks = () => {
 
   const { author, quote } = !!data && data[0];
 
-  console.log(loading, data);
+  /* console.log(loading, data); */
 
   return (
     <>
-      <h1>Rick and Morty Api</h1>
+      <h1>Multiple Custom Hooks</h1>
       <hr />
 
       {loading ? (
@@ -29,7 +29,7 @@ export const MultipleCustomHooks = () => {
         </blockquote>
       )}
 
-      <button onClick={increment} className="btn btn-primary">
+      <button onClick={increment} className="btn btn-primary m-1">
         Next quote
       </button>
     </>
