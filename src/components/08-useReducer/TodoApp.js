@@ -1,21 +1,42 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { todoReducer } from "./todoReducer";
 import "./styles.css";
+import { useForm } from "../../hooks/useForm";
 
-const initialState = [
-  {
-    id: new Date().getTime(),
-    desc: "Aprender React",
-    done: false,
-  },
-];
+const init = () => {
+  return localStorage.getItem("todos")
+    ? JSON.parse(localStorage.getItem("todos"))
+    : [];
+};
 
 export const TodoApp = () => {
-  const [todos, dispatch] = useReducer(todoReducer, initialState);
+  const [todos, dispatch] = useReducer(todoReducer, [], init);
+
+  const [{ description }, handleInputChange, reset] = useForm({
+    description: "",
+  });
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
+  const handleDelete = (todoId) => {
+    const action = {
+      type: "delete",
+      payload: todoId,
+    };
+
+    dispatch(action);
+    /* console.log(todoId); */
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (description.trim().length <= 1) {
+      return;
+    } else {
+    }
     const newTodo = {
       id: new Date().getTime(),
       desc: e.target.description.value,
@@ -28,6 +49,7 @@ export const TodoApp = () => {
     };
 
     dispatch(action);
+    reset();
   };
   return (
     <>
@@ -45,7 +67,12 @@ export const TodoApp = () => {
                     {todo.desc}
                   </p>
 
-                  <button className="btn btn-danger">Borrar</button>
+                  <button
+                    onClick={() => handleDelete(todo.id)}
+                    className="btn btn-danger"
+                  >
+                    Borrar
+                  </button>
                 </li>
               );
             })}
@@ -61,6 +88,8 @@ export const TodoApp = () => {
               className="form-control"
               placeholder="Aprender..."
               autoComplete="off"
+              value={description}
+              onChange={handleInputChange}
             />
             <button
               type="submit"
