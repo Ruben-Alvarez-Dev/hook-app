@@ -11,3 +11,10 @@
   justify-content: center;
   align-items: center; */
 }
+
+body {
+  padding: 70px;
+}
+button {
+  margin: 10px;
+}

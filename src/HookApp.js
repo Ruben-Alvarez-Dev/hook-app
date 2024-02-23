@@ -1,11 +1,14 @@
 import React from "react";
-import { CounterApp } from "./components/01-useState/CounterApp";
+
+import { MainApp } from "./components/09-useContext/MainApp";
 
 export const HookApp = () => {
   return (
     <>
-      <h2>HookApp Component</h2>
-      <CounterApp />
+      {/* <h2>HookApp Component</h2>
+      <hr /> */}
+      <MainApp />
+      {/* <CounterApp /> */}
     </>
   );
 };
